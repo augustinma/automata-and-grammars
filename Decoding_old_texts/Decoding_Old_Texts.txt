@@ -1,0 +1,19 @@
+During an exploration of the remotest place on our planet, remnants of an ancient civilization were discovered, meticulously hidden in the dark depths of caves. Among these rare findings, we stumbled upon clay tablets with mysterious texts whose meaning remains a mystery. What's peculiar is that each tablet seems to be written in a different language.
+
+University professors faced a challenge: Can they determine which language corresponds to the texts on each tablet? To unravel this mystery, they gathered information about all possible languages that could be used for the texts. They also created formal grammars that would represent these languages.
+
+To facilitate the study of these grammars, the professors proposed a standardized notation for all rules. This representation allows rewriting the left side of a rule into two non-terminals or one terminal. In the case of needing to generate an empty word, a rule is allowed that rewrites the initial non-terminal to nothing, but then the initial non-terminal must not appear on the right side of any other rule of this grammar.
+
+The following night was dedicated to transcribing symbols from the clay tablets. To our immense pleasure, this ancient civilization used symbols that can be represented by ASCII encoding, allowing us to easily convert symbols into a modern form and process them with computers.
+
+However, the university lacks proficient programmers, so they are seeking help. The university is looking for those who can write a program to determine whether a given word belongs to the language represented by the grammars described above. In the case of a positive answer, it is also necessary to find a way to create this word according to the rules of the grammar.
+
+Implement the task as a C++ program function with the signature: std::vector<size_t> trace(const Grammar&, const Word&);. The input to the function is the language grammar (represented as a structure Grammar) and the word (Word) for which you need to determine whether it belongs to the language. These structures are defined in the test environment, see the sample file. The grammar is defined according to the lectures. For simplicity, grammar symbols are defined as any values of type char. If the word belongs to the language, then we want to return any sequence of rule indices from which it originated by deriving the leftmost non-terminal. Rules are numbered from zero. If the word does not belong to the language, an empty sequence is expected.
+
+It is guaranteed that a valid grammar with rules according to the assignment will come as input, namely:
+
+    sets of symbols (Grammar::m_Terminals, Grammar::m_Nonterminals) will have no intersection,
+    all rules will contain only symbols from these two sets,
+    all rules will have exactly one terminal, two non-terminals, or, if the left side is the initial non-terminal, nothing on the right side (but then the initial non-terminal must not appear anywhere on the right side of any other rule of this grammar),
+    the initial symbol of the grammar appears in the set of non-terminals,
+    and there are not duplicities among the rules. 

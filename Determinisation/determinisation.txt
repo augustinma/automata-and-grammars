@@ -1,0 +1,16 @@
+The determinization algorithm of a finite automaton is a key tool in formal language theory. It finds extensive practical application in text processing, data analysis, and various fields of computer science. By converting non-deterministic automata into deterministic ones, it enables efficient language analysis, which is crucial in compilers, text analysis, regular expression matching, network management, database systems, and many other applications. The task is to find a deterministic finite automaton without useless and unreachable states such that the language it recognizes is equivalent to the language of the given non-deterministic finite automaton with multiple initial states.
+
+Implement the determinisation as a function in a C++ program, where the function signature is DFA determinize ( const MISNFA & nfa ); The input and output of the function are instances of finite automata of structures MISNFA and DFA, representing nondeterministic finite automaton with multiple initial states and deterministic finite automaton, respectively. These structures are defined by the test environment, note the example below. For simplicity, the states of the automata and alphabet symbols are defined as int types and char types, respectively.
+
+Comparison of your output, i.e., finite automaton given by your solution and the reference solution is through conversion to minimal deterministic finite automaton (mDFA). Your output can be different from the reference output (for example in state label, including/excluding fail state), the important fact is that after your output is minimized it needs to be same as minimized reference automaton (the state names are not important). The minimization of your automaton is performed by the test environment. It is not necessary to submit minimal automaton.
+
+The input is always valid nondeterministic finite automaton with multiple initial states, i.e.:
+
+    state set (MISNFA::m_States), initial states (MISNFA::m_InitialStates), and alphabet symbols (MISNFA::m_Alphabet) are nonempty,
+    initial and final states z from sets MISNFA::m_InitialStates and MISNFA::m_FinalStates are at the same time elements of the MISNFA::m_States set,
+    if there is a stateq and alphabet symbol a combination with undefined transition, the MISNFA::m_Transitions map does not contain the key(q, a)
+    the MISNFA::m_Transitions map contains only those values that are specified in state set and symbol set. 
+
+Resulting DFA must also satisfy automata definition. The same rules as specified for the MISNFA must hold for the DFA (except for details related to differences in the definition of the initial state and transition function).
+
+In case the language accepted by the automaton is empty, the result is a single-state automaton over the same alphabet as the input MISNFA. 
